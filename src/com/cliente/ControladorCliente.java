@@ -1,0 +1,185 @@
+package com.cliente;
+
+import java.io.IOException;
+import java.util.List;
+import javax.annotation.Resource;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.sql.DataSource;
+
+
+/**
+ * Servlet implementation class ControladorCliente
+ */
+@WebServlet("/ControladorCliente")
+public class ControladorCliente extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+     private ModeloCliente modeloCliente;
+     
+     public ControladorCliente() {
+    	 
+    	  modeloCliente = new ModeloCliente();
+     }
+ 
+     
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		//response.getWriter().append("Served at: ").append(request.getContextPath());
+		
+		String comando=request.getParameter("instruccion");
+		
+		if(comando==null) comando="listar";
+		
+		
+		switch(comando) {
+		
+		case "listar":
+			obtenerClientes(request,response);
+			break;
+			
+		case "insertarBBDD":
+			insertarCliente(request,response);
+			break;
+	    
+		case "modificar":
+			modificar(request,response);
+			break;
+		
+		case "eliminar":
+			eliminar(request,response);
+		    break;
+			
+		case "actualizar":
+			actualizar(request,response);
+			break;
+			
+			
+			default:
+				obtenerClientes(request,response);
+		        break;
+		}
+		
+		
+	}
+
+
+
+
+	private void actualizar(HttpServletRequest request, HttpServletResponse response) {
+		// TODO Auto-generated method stub
+		
+		///Recibir por parametros los datos del formulario
+		
+		  int codigo = Integer.parseInt(request.getParameter("codigoCliente"));
+		  String nombre = request.getParameter("nombre");
+		  String apellido = request.getParameter("apellido");
+          int dni = Integer.parseInt(request.getParameter("dni"));		  
+          int telefono = Integer.parseInt(request.getParameter("telefono"));	
+          String direccion = request.getParameter("direccion");
+          String correo = request.getParameter("correo");
+		
+		// Preparar objeto Cliente
+		
+          Cliente temp= new Cliente(codigo,nombre,apellido,dni,telefono,direccion,correo);
+          
+		// enviar objeto al ModeloCliente
+          
+          modeloCliente.actualizar(temp);
+		
+		//Poner Listado
+		obtenerClientes(request,response);
+		
+	}
+
+
+	private void eliminar(HttpServletRequest request, HttpServletResponse response) {
+		// TODO Auto-generated method stub
+		
+	   	int codigo=Integer.parseInt(request.getParameter("Codigo"));
+		
+		  modeloCliente.eliminar(codigo);
+		  
+		  obtenerClientes(request,response);
+	}
+
+
+	private void modificar(HttpServletRequest request, HttpServletResponse response) {
+		// TODO Auto-generated method stub
+		
+              List<Cliente> clientes;
+		
+		try {
+			
+			clientes=modeloCliente.getClientes();
+			
+			request.setAttribute("LISTACLIENTES",clientes);
+			
+			RequestDispatcher miDispatcher=request.getRequestDispatcher("clientes/modificar.jsp");
+			
+			miDispatcher.forward(request,response);
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+			
+			
+		}
+		
+	}
+
+
+	private void insertarCliente(HttpServletRequest request, HttpServletResponse response) {
+		// TODO Auto-generated method stub
+		
+		String nombre=request.getParameter("nombre");
+		
+		String apellido=request.getParameter("apellido");
+		
+	    int dni=Integer.parseInt(request.getParameter("dni"));
+	    
+	    int telefono=Integer.parseInt(request.getParameter("telefono"));
+	   
+	    String direccion=request.getParameter("direccion");
+	    
+	    String correo=request.getParameter("correo");
+	    
+	    Cliente nuevoCliente = new Cliente(nombre,apellido,dni,telefono,direccion,correo);
+	    
+	    modeloCliente.agregarNuevoCliente(nuevoCliente);
+	    
+	    obtenerClientes(request,response);
+	    
+	    
+	    
+	    
+		
+	}
+
+
+	private void obtenerClientes(HttpServletRequest request, HttpServletResponse response) {
+		// TODO Auto-generated method stub
+		
+		List<Cliente> clientes;
+		
+		try {
+			
+			clientes=modeloCliente.getClientes();
+			
+			request.setAttribute("LISTACLIENTES",clientes);
+			
+			RequestDispatcher miDispatcher=request.getRequestDispatcher("clientes/ListaClientes.jsp");
+			
+			miDispatcher.forward(request,response);
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+			
+			
+		}
+	}
+
+}

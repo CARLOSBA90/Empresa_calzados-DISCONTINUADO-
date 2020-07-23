@@ -1,0 +1,127 @@
+@charset "utf-8";
+/* CSS Document */
+
+* {
+    margin: 0px;
+    padding: 0px;
+  }
+  
+ol, ul {
+	list-style: none;
+}
+  
+html,body{
+    
+	margin:0px;
+    height:100%;
+}
+
+#Cabecera {
+	
+	background-color: #ADD8E6;
+	margin-top:0;
+	width:100%;
+	padding:5px;
+	
+}
+
+#TituloCabecera {
+	
+	font-family: Arial;
+	font-size:2.5em;
+	color:white;
+	text-shadow: 1px 2px black;
+	font-weight:700;
+	
+}
+
+body{
+	
+}
+
+#Opciones{
+
+     float:left;
+     width:13%;
+     background-color: #e0f0f5;
+     height:100%;
+     font-family: Arial;
+     font-weight:600;
+     text-align:center;
+     position: fixed; 
+     overflow-x: hidden;
+}
+
+
+.TituloOpciones{
+     
+	 background-color: #81a2ac;
+     padding:4px;
+
+}
+
+#Opciones li{
+
+      padding:3px;
+	
+}
+
+#Visualizacion{
+
+       padding-left: 13%;
+	
+}
+
+.filas{
+
+  text-align:center;
+  padding:3px;
+}
+
+.textoLargo{
+	
+	width:75%;
+}
+
+table {
+  border-collapse: collapse;
+  min-width:60%;
+
+}
+
+th, td {
+  text-align: left;
+  padding: 0px;
+  
+}
+
+tr:nth-child(even) {background-color: #f2f2f2;}
+
+a {
+  color: inherit; 
+  text-decoration: inherit; 
+}
+
+input,button {
+	
+	height: 100%;	
+	margin:4px;
+	padding:3px;
+
+}
+
+
+select{
+	
+}
+
+a:hover { 
+
+	color:blue;
+
+	
+
+	
+	
+	}
+	
