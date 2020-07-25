@@ -3,6 +3,11 @@ package com.inicio;
 import java.sql.Date;
 
 public class Noticia {
+	
+	public Noticia(String titulo, String texto) {
+		this.titulo = titulo;
+		this.texto = texto;
+	}
 	public Noticia(Date fecha, String titulo, String texto) {
 		this.fecha = fecha;
 		this.titulo = titulo;

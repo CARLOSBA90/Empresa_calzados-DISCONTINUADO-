@@ -1,15 +1,14 @@
 package com.cliente;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
-import javax.annotation.Resource;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.sql.DataSource;
 
 
 /**
@@ -43,7 +42,12 @@ public class ControladorCliente extends HttpServlet {
 			break;
 			
 		case "insertarBBDD":
-			insertarCliente(request,response);
+			try {
+				insertarCliente(request,response);
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 			break;
 	    
 		case "modificar":
@@ -55,7 +59,12 @@ public class ControladorCliente extends HttpServlet {
 		    break;
 			
 		case "actualizar":
-			actualizar(request,response);
+			try {
+				actualizar(request,response);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			break;
 			
 			
@@ -70,7 +79,7 @@ public class ControladorCliente extends HttpServlet {
 
 
 
-	private void actualizar(HttpServletRequest request, HttpServletResponse response) {
+	private void actualizar(HttpServletRequest request, HttpServletResponse response) throws SQLException {
 		// TODO Auto-generated method stub
 		
 		///Recibir por parametros los datos del formulario
@@ -132,7 +141,7 @@ public class ControladorCliente extends HttpServlet {
 	}
 
 
-	private void insertarCliente(HttpServletRequest request, HttpServletResponse response) {
+	private void insertarCliente(HttpServletRequest request, HttpServletResponse response) throws SQLException {
 		// TODO Auto-generated method stub
 		
 		String nombre=request.getParameter("nombre");

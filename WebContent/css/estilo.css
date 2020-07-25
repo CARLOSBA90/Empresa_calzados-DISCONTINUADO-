@@ -18,7 +18,7 @@ html,body{
 
 #Cabecera {
 	
-	background-color: #ADD8E6;
+	background-color: #81a2ac;
 	margin-top:0;
 	width:100%;
 	padding:5px;
@@ -48,7 +48,7 @@ body{
      font-family: Arial;
      font-weight:600;
      text-align:center;
-     position: fixed; 
+     min-width:15%;
      overflow-x: hidden;
 }
 
@@ -58,6 +58,13 @@ body{
 	 background-color: #81a2ac;
      padding:4px;
 
+}
+
+.OpcionSuperior{
+	
+	background-color: #777d7b;
+	padding:4px;
+	
 }
 
 #Opciones li{

@@ -75,8 +75,8 @@ public class ModeloCliente {
 		
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-		//	miConexion= (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/empresa_calzado","root",""); 
-	     miConexion= (Connection) DriverManager.getConnection("jdbc:mysql://node51735-empresacz.jelastic.saveincloud.net:3306/empresa_calzado","usuario","PvW3GqfSb7JsQW4F"); 	 
+			miConexion= (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/empresa_calzado","root",""); 
+			//  miConexion= (Connection) DriverManager.getConnection("jdbc:mysql://node51735-empresacz.jelastic.saveincloud.net:3306/empresa_calzado","usuario","PvW3GqfSb7JsQW4F"); 	 
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -85,7 +85,7 @@ public class ModeloCliente {
 	
 	}
 
-	public void agregarNuevoCliente(Cliente nuevoCliente) {
+	public void agregarNuevoCliente(Cliente nuevoCliente) throws SQLException {
 		// TODO Auto-generated method stub
 		
 		PreparedStatement miStatement=null;
@@ -119,10 +119,13 @@ public class ModeloCliente {
 			
 			
 			
-		}catch(Exception e){
-			e.printStackTrace();
+		}catch(SQLException e) {
 			
-    	      }
+			e.printStackTrace();
+    	      }finally {
+        	miStatement.close();
+			miConexion.close();
+        }
 		
 		
 	}
@@ -152,7 +155,7 @@ public class ModeloCliente {
 		
 	}
 
-	public void actualizar(Cliente temp) {
+	public void actualizar(Cliente temp) throws SQLException {
 		// TODO Auto-generated method stub
 			
 		 PreparedStatement miStatement=null;
@@ -182,9 +185,13 @@ public class ModeloCliente {
 			
 			miStatement.execute();
 			 
-		 }catch(Exception e) {
-			 e.printStackTrace();
-		 }
+		 }catch(SQLException e) {
+				
+				e.printStackTrace();
+	    	      }finally {
+	        	miStatement.close();
+				miConexion.close();
+	        }
 		
 	}
 	

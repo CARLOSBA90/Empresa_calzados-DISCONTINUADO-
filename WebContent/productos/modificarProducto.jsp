@@ -13,7 +13,8 @@
   <div id="TituloCabecera">Empresa de Calzados</div>
 </header>
 <aside id="Opciones">
-<div class="TituloOpciones"><a href="ControladorInicio?instruccion=noticia">INICIO</a></div>
+<div class="OpcionSuperior"><a href="ControladorInicio?instruccion=noticia">INICIO</a></div>
+<div class="OpcionSuperior"><a href="ControladorInicio?instruccion=tablero">TABLERO</a></div>
 <div class="TituloOpciones">CLIENTES</div> 
 <ul>
 <li><a href="ControladorCliente?instruccion=listar">VER CLIENTES</a></li> 

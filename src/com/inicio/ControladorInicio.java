@@ -1,6 +1,7 @@
 package com.inicio;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -29,6 +30,7 @@ public class ControladorInicio extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		
 		String comando = request.getParameter("instruccion");
 		
 		if(comando==null) comando="noticia";
@@ -37,6 +39,20 @@ public class ControladorInicio extends HttpServlet {
 		
 		case "noticia": 
 			obtenerNoticias(request,response);
+			break;
+			
+		case "tablero":
+			obtenerTablero(request,response);
+			break;
+			
+		case "nuevaNota":
+		    try {
+				nuevaNota(request,response);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		    break;
 			
 		default:
 
@@ -44,6 +60,49 @@ public class ControladorInicio extends HttpServlet {
 		
 		
 		
+		
+	}
+
+
+
+	private void nuevaNota(HttpServletRequest request, HttpServletResponse response) throws SQLException {
+		// TODO Auto-generated method stub
+	
+		String titulo = request.getParameter("titulo");
+		
+		String texto = request.getParameter("texto");
+		
+		Noticia temp = new Noticia(titulo,texto);
+		
+		modelo.agregarNuevaNota(temp);
+		
+		obtenerTablero(request,response);
+		
+		
+	}
+
+
+
+	private void obtenerTablero(HttpServletRequest request, HttpServletResponse response) {
+		// TODO Auto-generated method stub
+		
+		List<Noticia> tablero; /// se utiliza la misma clase de Noticias ya que tiene el mismo formato
+		
+		
+		try {
+			tablero=modelo.getTablero();
+			
+			request.setAttribute("TABLERO",tablero);
+			
+			RequestDispatcher miDispatcher=request.getRequestDispatcher("inicio/tablero.jsp");
+			
+			miDispatcher.forward(request,response);
+			
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 
