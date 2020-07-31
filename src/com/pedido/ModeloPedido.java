@@ -25,8 +25,8 @@ public class ModeloPedido {
 		
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			miConexion = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/empresa_calzado","root",""); 
-	  //   miConexion = (Connection) DriverManager.getConnection("jdbc:mysql://node51735-empresacz.jelastic.saveincloud.net:3306/empresa_calzado","usuario","PvW3GqfSb7JsQW4F"); 	 
+			 //	miConexion = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/empresa_calzado","root",""); 
+	            miConexion = (Connection) DriverManager.getConnection("jdbc:mysql://node51735-empresacz.jelastic.saveincloud.net:3306/empresa_calzado","usuario","PvW3GqfSb7JsQW4F"); 	 
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
