@@ -37,7 +37,7 @@
               <!-- Sidebar - Brand -->
               <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
                 <div class="sidebar-brand-icon rotate-n-15">
-                  <i class="fas fa-laugh-wink"></i>
+                  <i class="fas fa-shoe-prints"></i>
                 </div>
                 <div class="sidebar-brand-text mx-3">Distribuidora de Calzados <sup>1</sup></div>
               </a>
@@ -45,11 +45,17 @@
               <!-- Divider -->
               <hr class="sidebar-divider my-0">
 
-              <!-- Nav Item - Dashboard -->
+              <!-- Nav Item - Inicio -->
               <li class="nav-item active">
                 <a class="nav-link" href="ControladorInicio?instruccion=noticia">
-                  <i class="fas fa-fw fa-tachometer-alt"></i>
+                  <i class="far fa-newspaper"></i>
                   <span>Inicio</span></a>
+              </li>
+              
+               <li class="nav-item active">
+                <a class="nav-link" href="ControladorInicio?instruccion=tablero">
+                  <i class="far fa-edit"></i>
+                  <span>Tablero</span></a>
               </li>
 
               <!-- Divider -->
@@ -63,7 +69,7 @@
               <!-- Nav Item - CLIENTES -->
               <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#MenuCliente" aria-expanded="true" aria-controls="MenuCliente">
-                  <i class="fas fa-fw fa-cog"></i>
+                  <i class="fas fa-users"></i>
                   <span>Clientes</span>
                 </a>
                 <div id="MenuCliente" class="collapse" aria-labelledby="cabeceraCliente" data-parent="#accordionSidebar">
@@ -79,7 +85,7 @@
               <!-- Nav Item - PEDIDOS -->
               <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#MenuPedido" aria-expanded="true" aria-controls="MenuPedido">
-                  <i class="fas fa-fw fa-wrench"></i>
+                  <i class="fas fa-shopping-basket"></i>
                   <span>Pedidos</span>
                 </a>
                 <div id="MenuPedido" class="collapse" aria-labelledby="cabeceraPedido" data-parent="#accordionSidebar">
@@ -95,7 +101,7 @@
                   <!-- Nav Item - PRODUCTOS -->
               <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#MenuProducto" aria-expanded="true" aria-controls="MenuProducto">
-                  <i class="fas fa-fw fa-wrench"></i>
+                  <i class="fab fa-product-hunt"></i>
                   <span>Productos</span>
                 </a>
                 <div id="MenuProducto" class="collapse" aria-labelledby="cabeceraProducto" data-parent="#accordionSidebar">
