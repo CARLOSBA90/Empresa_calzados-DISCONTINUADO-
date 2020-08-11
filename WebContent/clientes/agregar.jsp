@@ -229,11 +229,6 @@
 										<table>
 											<tbody>
 												<tr>
-													<td width="25%">Tipo</td>
-													<td width="90%"><input type="text" name="tipo"
-														id="tipo" required></td>
-												</tr>
-												<tr>
 													<td>Nombre</td>
 													<td><input type="text" name="nombre" id="nombre"
 														required></td>

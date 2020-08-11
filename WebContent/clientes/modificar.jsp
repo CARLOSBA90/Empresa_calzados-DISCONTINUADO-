@@ -227,20 +227,16 @@
                 
                       <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                          <h6 class="m-0 font-weight-bold text-primary">Lista de Clientes</h6>
-										<form name="modificacion" method="get"
-											action="clientes/modificando.jsp">
+                          <h6 class="m-0 font-weight-bold text-primary">Lista de clientes</h6>
+										<form name="modificacion" method="get" action="clientes/modificando.jsp">
 											<select name="listaCliente" id="listaCliente">
-												<option selected="selected" disabled selected value>-SELECCIONE
-													CLIENTE-</option>
+												<option selected="selected" disabled selected value>-SELECCIONE CLIENTE-</option>
 												<c:forEach var="tempCliente" items="${LISTACLIENTES}">
 													<option
 														value="${tempCliente.cod_cliente}/${tempCliente.nombre}/${tempCliente.apellido}/${tempCliente.dni}/${tempCliente.telefono}/${tempCliente.direccion}/${tempCliente.correo}">${tempCliente.nombre}
 														${tempCliente.apellido}</option>
 												</c:forEach>
-											</select> <input type="submit" name="submit" id="submit"
-												value="Modificar">
-											</td>
+											</select> <input type="submit" name="submit" id="submit" value="Modificar">
 										</form>
 									</div>
                         <div class="card-body">
@@ -248,14 +244,12 @@
 											<tbody>
 												<tr>
 													<td width="25%">Codigo Cliente</td>
-													<td width="90%"><input type="text"
-														name="codigoCliente" id="codigoCliente"></td>
+													<td width="90%"><input type="text" name="codigoCliente" id="codigoCliente"></td>
 												</tr>
 
 												<tr>
 													<td width="25%">Nombre</td>
-													<td width="90%"><input type="text" name="nombre"
-														id="nombre"></td>
+													<td width="90%"><input type="text" name="nombre" id="nombre"></td>
 												</tr>
 												<tr>
 													<td>Apellido</td>

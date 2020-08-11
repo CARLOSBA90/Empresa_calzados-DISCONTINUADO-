@@ -275,13 +275,13 @@
 													<tr>
 														<td>Direccion</td>
 														<td><input type="text" name="direccion"
-															id="direccion" value="<%=datos[5]%>" class="textoLargo"
+															id="direccion" value="<%=datos[5]%>"
 															required></td>
 													</tr>
 													<tr>
 														<td>Correo</td>
 														<td><input type="text" name="correo" id="correo"
-															value="<%=datos[6]%>" class="textoLargo" required></td>
+															value="<%=datos[6]%>" required></td>
 													</tr>
 													<tr>
 														<td><a

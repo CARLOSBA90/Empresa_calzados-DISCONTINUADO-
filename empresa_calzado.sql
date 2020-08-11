@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 25-07-2020 a las 15:58:02
+-- Tiempo de generación: 11-08-2020 a las 14:47:28
 -- Versión del servidor: 5.5.24-log
 -- Versión de PHP: 5.4.3
 
@@ -19,8 +19,6 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `empresa_calzado`
 --
-CREATE DATABASE `empresa_calzado` DEFAULT CHARACTER SET utf8 COLLATE utf8_spanish_ci;
-USE `empresa_calzado`;
 
 -- --------------------------------------------------------
 
@@ -37,7 +35,7 @@ CREATE TABLE IF NOT EXISTS `cliente` (
   `DIRECCION` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
   `CORREO` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
   PRIMARY KEY (`COD_CLIENTE`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=16 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=17 ;
 
 --
 -- Volcado de datos para la tabla `cliente`
@@ -47,13 +45,14 @@ INSERT INTO `cliente` (`COD_CLIENTE`, `NOMBRE`, `APELLIDO`, `DNI`, `TELEFONO`, `
 (4, 'CARLOS', 'RAMIREZ', 12654789, 11111, 'PALERMO', 'PALERMO@SITIO.NET'),
 (6, 'Mario', 'Funes', 21568753, 1122256665, 'BELGRANO ', 'FUNESM@BELGRANO.COM'),
 (7, 'JOSE', 'PEREZ', 15935784, 1144445555, 'RECOLETA', 'JPEREZ@RECOLETA.COM'),
-(8, 'MARIA', 'FUENTES', 9517526, 1177776666, 'PALERMO', 'MFUENTES@PALERMO.NET'),
+(8, 'MARIA', 'FUENTES', 9517526, 1177771111, 'PALERMO', 'MFUENTES@PALERMO.NET'),
 (9, 'FITO', 'PAEZ', 2003344, 1122225555, 'LA BOCA', 'ESTEPAEZ@BOCA.COM'),
 (11, 'JESUS', 'CACERES', 8523692, 1188885555, 'BALVANERA', 'CACERESJ@BALVA.NET'),
 (12, 'Carlos', 'Bueno', 120344, 1122225555, 'palermo', 'este@mm.ss'),
 (13, 'Paola', 'Reyes', 99581932, 1122225555, 'Uruguay 521', 'paor@gmail.com'),
 (14, 'JOSE', 'GUTIERREZ', 9225446, 1133336661, 'BARRIO NORTE', 'JGUTI@NORTE.NET'),
-(15, 'Benito', 'Gomez', 123568999, 22223333, 'ROSARIO', 'ROSARIO@NORTE.NET');
+(15, 'Benito', 'Gomez', 123568999, 22223333, 'ROSARIO', 'ROSARIO@NORTE.NET'),
+(16, 'Juani', 'Moros', 92004002, 111222334, 'LA BOCA', 'ESTERIO@GMAIL.COM');
 
 -- --------------------------------------------------------
 
@@ -67,7 +66,7 @@ CREATE TABLE IF NOT EXISTS `inicio` (
   `texto` varchar(500) COLLATE utf8_spanish_ci NOT NULL,
   `fecha` date NOT NULL,
   PRIMARY KEY (`cod_noticia`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=5 ;
 
 --
 -- Volcado de datos para la tabla `inicio`
@@ -75,7 +74,9 @@ CREATE TABLE IF NOT EXISTS `inicio` (
 
 INSERT INTO `inicio` (`cod_noticia`, `titulo`, `texto`, `fecha`) VALUES
 (1, 'Version 1.0 del CRUD "Empresa Calzados" ', 'Esta primera version tiene funciones basicas para la gestion virtual de una empresa de calzados, cuenta con datos de clientes, productos y pedidos. para la creacion de este sitio web se utiliza MySql como base de datos, JSP y SERVLET de lado del servidor, CSS, HTML y Javascript puro para el lado del cliente. Se implementeran mejoras como validaciones, Gestion de tareas, Tabloide  y obtencion de datos en formato PDF', '2020-07-21'),
-(2, 'Version 1.01', 'Se arreglaron cierto enlaces que no funcionaban, retoques de CSS, se agrego un tablero de notas', '2020-07-25');
+(2, 'Version 1.01', 'Se arreglaron cierto enlaces que no funcionaban, retoques de CSS, se agrego un tablero de notas', '2020-07-25'),
+(3, 'Version 1.04', 'Se actualiza al framework Bootstrap 4 con plantilla predefinida', '2020-08-05'),
+(4, 'Version 1.08', 'Todas las secciones actualizadas al framework de Bootstraps', '2020-08-11');
 
 -- --------------------------------------------------------
 
@@ -93,7 +94,7 @@ CREATE TABLE IF NOT EXISTS `pedido` (
   `FECHA_PEDIDO` date NOT NULL,
   PRIMARY KEY (`COD_PEDIDO`),
   KEY `COD_CLIENTE` (`COD_CLIENTE`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=17 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=18 ;
 
 --
 -- Volcado de datos para la tabla `pedido`
@@ -106,7 +107,8 @@ INSERT INTO `pedido` (`COD_PEDIDO`, `COD_CLIENTE`, `CANTIDAD_CALZADOS`, `PRECIO_
 (13, 7, 2, '800', 'contado', 0, '2020-07-20'),
 (14, 7, 2, '800', 'contado', 0, '2020-07-20'),
 (15, 9, 8, '4600', 'credito', 0, '2020-07-21'),
-(16, 15, 11, '6000', 'credito', 0, '2020-07-25');
+(16, 15, 11, '6000', 'credito', 0, '2020-07-25'),
+(17, 8, 16, '16000', 'contado', 0, '2020-08-11');
 
 -- --------------------------------------------------------
 
@@ -127,7 +129,7 @@ CREATE TABLE IF NOT EXISTS `pedido_producto` (
   KEY `COD_PEDIDO_2` (`COD_PEDIDO`),
   KEY `COD_PRODUCTO_2` (`COD_PRODUCTO`),
   KEY `COD_PEDIDO_3` (`COD_PEDIDO`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=35 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=38 ;
 
 --
 -- Volcado de datos para la tabla `pedido_producto`
@@ -146,7 +148,10 @@ INSERT INTO `pedido_producto` (`COD_PEDIDO_PRODUCTO`, `COD_PEDIDO`, `COD_PRODUCT
 (31, 15, 7, 5, '200', '1000'),
 (32, 15, 9, 3, '1200', '3600'),
 (33, 16, 4, 6, '750', '4500'),
-(34, 16, 6, 5, '300', '1500');
+(34, 16, 6, 5, '300', '1500'),
+(35, 17, 2, 4, '1000', '4000'),
+(36, 17, 8, 5, '1000', '5000'),
+(37, 17, 8, 7, '1000', '7000');
 
 -- --------------------------------------------------------
 
@@ -163,27 +168,28 @@ CREATE TABLE IF NOT EXISTS `producto_calzado` (
   `TALLA` int(3) NOT NULL,
   `STOCK` int(3) NOT NULL,
   PRIMARY KEY (`COD_CALZADO`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=15 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=16 ;
 
 --
 -- Volcado de datos para la tabla `producto_calzado`
 --
 
 INSERT INTO `producto_calzado` (`COD_CALZADO`, `TIPO`, `NOMBRE`, `PRECIO`, `FABRICANTE`, `TALLA`, `STOCK`) VALUES
-(1, 'DEPORTIVO', 'CALZADO_A', '500', 'LIKES', 40, 85),
-(2, 'BOTAS', 'MONTANERAS', '1000', 'MOINT', 39, 48),
+(1, 'DEPORTIVO', 'CALZADO_A', '500', 'LIKES', 40, 99),
+(2, 'BOTAS', 'MONTANERAS', '1000', 'MOINT', 39, 44),
 (3, 'SANDALIAS', 'SANDALIA_M', '200', 'VERANOSAND', 35, 106),
 (4, 'DEPORTIVO', 'FUTBOL_01', '800', 'LIKES', 38, 49),
-(5, 'DEPORTIVO', 'BALONCESTO_01', '600', 'LIKES', 40, 32),
+(5, 'DEPORTIVO', 'BALONCESTO_01', '600', 'LIKES', 45, 32),
 (6, 'SANDALIAS', 'SAND_01', '300', 'LIKES', 38, 35),
 (7, 'SANDALIAS', 'SANDALIAS_S', '200', 'VERANOSAND', 32, 85),
-(8, 'CASUAL', 'CASUAL_01', '1000', 'VESTID', 37, 100),
+(8, 'CASUAL', 'CASUAL_01', '1000', 'VESTID', 37, 88),
 (9, 'CASUAL', 'CASUAL_02', '1200', 'VESTID', 42, 82),
 (10, 'C_PROTECCION', 'SEGURIDAD_01', '1500', 'MOINT', 40, 59),
 (11, 'DEPORTIVO', 'ZAPATILLAS_01', '600', 'TODO_FUTB', 38, 47),
 (12, 'CASUAL', 'CASUAL_03', '700', 'VESTID', 38, 56),
 (13, 'BOTAS', 'BOTINES', '900', 'MOINT', 40, 56),
-(14, 'DEPORTIVO', 'AMERICANO', '950', 'AMERICANIN', 40, 99);
+(14, 'DEPORTIVO', 'AMERICANO', '950', 'AMERICANIN', 40, 99),
+(15, 'CASUAL', 'BOTINOS', '100', 'LIKES', 40, 10);
 
 -- --------------------------------------------------------
 
@@ -197,7 +203,7 @@ CREATE TABLE IF NOT EXISTS `tablero` (
   `texto` varchar(500) COLLATE utf8_spanish_ci NOT NULL,
   `fecha` date NOT NULL,
   PRIMARY KEY (`cod_tablero`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=11 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=4 ;
 
 --
 -- Volcado de datos para la tabla `tablero`
