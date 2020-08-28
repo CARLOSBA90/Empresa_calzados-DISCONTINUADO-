@@ -17,14 +17,14 @@ public class DbManager {
     }  
 
     public Connection createConnection() throws IOException, ClassNotFoundException, SQLException {  
-        Properties prop = new Properties();  
+        String driver;  
+        /*    Properties prop = new Properties();  
       //  System.out.println("\n\n=======================\nJDBC Connector Test " + date);  
       //  System.out.println("User home directory: " + System.getProperty("user.home"));  
         String host;  
         String username;  
         String password;  
-        String driver;  
-        try {  
+       try {  
         	
             prop.load(new java.io.FileInputStream("C:\\Users/Kayreth/eclipse-workspace/Empresa_Calzados/files/mydb.cfg"));  
             host = prop.getProperty("host").toString();  
@@ -41,11 +41,13 @@ public class DbManager {
         }  
 
       //  System.out.println("host: " + host + "\nusername: " + username + "\npassword: " + password + "\ndriver: " + driver);  
-
-        Class.forName(driver); 
+*/
+        Class.forName("com.mysql.jdbc.Driver"); 
         DriverManager.setLoginTimeout(LoginTimeout);  
-        Connection connection = DriverManager.getConnection(host, username, password); 
- 
+        //Connection connection = DriverManager.getConnection("jdbc:mysql://us-cdbr-east-02.cleardb.com/heroku_69bd0ed0a4febcb", "b20bc5dd91893d", "31dc0f46"); 
+        
+        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/empresa_calzado", "root", ""); 
+
 
         return connection;  
     }  
